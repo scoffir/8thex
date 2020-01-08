@@ -24,8 +24,8 @@ namespace Beerhall {
             services
                 .AddControllersWithViews()
                 .AddRazorRuntimeCompilation();
-            services.AddDbContext<ApplicationDbContext>(options => 
-                options.UseSqlServer(Configuration.GetValue<string>("Data:DefaultConnection:ConnectionString")));
+            services.AddDbContext<ApplicationDbContext>(
+                options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<BeerhallDataInitializer>();
         }
 
