@@ -35,7 +35,7 @@ namespace Beerhall.Data.Repositories
 
         public Brewer GetBy(int brewerId)
         {
-            return _brewers.SingleOrDefault(b => b.BrewerId == brewerId);
+            return _brewers.Include(b => b.Location).SingleOrDefault(b => b.BrewerId == brewerId);
         }
 
         public void SaveChanges()

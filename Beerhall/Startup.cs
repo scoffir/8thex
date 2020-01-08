@@ -30,6 +30,7 @@ namespace Beerhall {
                 options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<BeerhallDataInitializer>();
             services.AddScoped<IBrewerRepository, BrewerRepository>();
+            services.AddScoped<ILocationRepository, LocationRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
