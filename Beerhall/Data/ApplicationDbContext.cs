@@ -1,4 +1,5 @@
-﻿using Beerhall.Models.Domain;
+﻿using Beerhall.Data.Mappers;
+using Beerhall.Models.Domain;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,9 @@ namespace Beerhall.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration(new BrewerConfiguration());
+            modelBuilder.ApplyConfiguration(new LocationConfiguration());
+            modelBuilder.ApplyConfiguration(new BeerConfiguration());
         }
     }
 }
