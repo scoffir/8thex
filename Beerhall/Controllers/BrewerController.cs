@@ -64,6 +64,21 @@ namespace Beerhall.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            ViewData[nameof(Brewer.Name)] = _brewerRepository.GetBy(id).Name;
+            return View();
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            _brewerRepository.Delete(_brewerRepository.GetBy(id));
+            _brewerRepository.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
+
         private void MapBrewerEditViewModelToBrewer(BrewerEditViewModel brewerEditViewModel, Brewer brewer)
         {
             brewer.Name = brewerEditViewModel.Name;
